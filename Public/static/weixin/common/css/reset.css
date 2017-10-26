@@ -1,0 +1,225 @@
+@charset "UTF-8";
+body {
+  width: 100%;
+  height: 100%;
+  max-width: 720px;
+  min-width: 320px;
+  margin: 0 auto;
+  font-family: "Helvetica Neue", Helvetica, STHeiTi,"Microsoft Yahei", sans-serif;
+  background: #EDEDF2;
+  color: #999;
+  font-size: 12px;
+  overflow-x: hidden; }
+
+body, html{
+  -webkit-tap-highlight-color: transparent; 
+}
+
+a {
+  text-decoration: none; 
+}
+
+h1, h2, h3, h4,h5, ul, li, p, span, em, i, dl, dt, dd,input{
+  margin: 0;
+  padding: 0; 
+}
+
+h1, h2, h3, h4,h5{
+  font-weight: normal;
+}
+
+input, button{
+  border: none;
+  outline: none;
+  vertical-align: middle;
+  box-shadow: none;
+}
+
+input::-webkit-input-placeholder{
+  color:#C7C7C7;
+}
+
+li {
+  list-style: none; }
+
+span, em, i{
+  font-style: normal;
+}
+
+input,textarea{
+   -webkit-appearance:none;
+      -moz-appearance:none;
+           appearance:none; 
+           border-radius: 0;
+}
+
+.success-icon,.notice:before,.loan-review-icon{ 
+  background: url(../images/bg_all.png) no-repeat;
+  background-size: 175px auto;
+}
+
+.container,.items-list{
+  padding: 0 0 5px 15px;
+  margin-top: 20px; 
+  background: #fff;
+  border-top: 1px solid #DBDBDB; 
+  border-bottom: 1px solid #DBDBDB;
+}
+
+.container h4,.items-list h4{
+  height: 45px;
+  line-height: 45px;
+  font-size: 15px;
+  font-weight: normal;
+  color: #333333;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.item-box{
+   padding: 15px 0;
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   display: -webkit-flex;
+   border-top: 1px solid #DBDBDB;
+}
+
+.item-flex{
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flex-box;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+
+.notice{
+  padding: 12px 12px 12px 36px;
+  position: relative;
+  color: #333333;
+  vertical-align: middle;
+}
+
+.notice:before{
+  content: '';
+  width: 18px;
+  height: 18px;
+  display: block;
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background-position: -53px -50px;
+}
+
+
+.large-btn{
+  width: 90%;
+  line-height: 45px;
+  display: block;
+  margin: 30px auto;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  background: -webkit-gradient(linear,left top, right top,from(#FF7061),to(#F15B5C));
+  background: linear-gradient(to right,#FF7061,#F15B5C);
+  border-radius: 6px;
+}
+
+
+.item-direction{
+    line-height: 45px;
+    font-size: 14px;
+    color: #333333;
+    border-bottom: 1px solid #DBDBDB;
+    position: relative;
+}
+
+.item-direction a{
+   color: #333333;
+}
+
+.item-direction:after,.way-approve:after{
+  content: " ";
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-width: 1px 1px 0 0;
+  border-color: #999999;
+  border-style: solid;
+  -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  margin-top: -4px;
+  right: 15px;
+}
+
+.alloy-selector{
+  display: none;
+}
+
+.success-icon{
+  width: 66px;
+  height: 66px;
+  display: block;
+  margin: 0 auto 25px;
+  background-position: -47px -105px;
+}
+
+
+.operating{
+   width: 100%;
+   max-width: 720px;
+   box-sizing: border-box;
+   padding: 8px 0;
+   position: fixed;
+   left: 50%;
+   bottom: 0;
+   z-index: 100;
+   transform: translateX(-50%);
+   -webkit-transform: translateX(-50%);
+   border-top: 1px solid #DBDBDB;
+   background: #fff;
+   text-align: center;
+}
+
+.agreement-input{
+   width: 14px;
+   height: 14px;
+   border: 1px solid #BBBBBB;
+   margin-right: 9px;
+   vertical-align: middle;
+}
+
+.item-selected,.agreement-input:checked {
+    background: #F15B5C url(../images/bg_all.png) no-repeat;
+    background-size: 175px auto;
+   
+}
+
+.agreement-input:checked {
+  background-position: -54px -75px;
+  border: none;
+}
+
+.item-selected{
+    background-position: -52px -73px;
+    border: none!important;
+}
+
+.no-data{
+  font-size: 15px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.statement-tips li{
+  font-size: 14px!important;
+}
+

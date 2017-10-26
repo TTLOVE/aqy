@@ -1,0 +1,28 @@
+{
+  "name": "leaf/leaf-loger",
+  "version": "1.1.0",
+  "type": "library",
+  "description": "a light loger",
+  "keywords": [
+    "loger",
+    "php"
+  ],
+  "homepage": "https://www.leafphp.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "hongshuai dong",
+      "email": "663280439@qq.com",
+      "homepage": "http://www.leafphp.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "psr/log": "~1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Leaf\\Loger\\": "src/"
+    }
+  }
+}

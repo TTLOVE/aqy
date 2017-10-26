@@ -1,0 +1,3 @@
+tags
+App/View/Cache/*
+!App/View/Cache/.gitkeep
