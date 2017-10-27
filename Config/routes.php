@@ -4,7 +4,8 @@ use \NoahBuscher\Macaw\Macaw;
 
 // weixin页面
 Macaw::get('home', 'Controller\WeixinController@home');
-Macaw::post('weixin/storeExtra/saveInfo', 'Controller\WeixinStoreExtraController@saveStoreExtraInfo');
+Macaw::get('savePic', 'Controller\WeixinController@savePic');
+Macaw::post('savePic', 'Controller\WeixinController@savePic');
 
 
 // 外部回调接口

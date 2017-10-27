@@ -32,8 +32,7 @@ if(getenv('RUNTIME_ENVIROMENT') == "DEV"){
         ]
     );
     // 本站域名
-    define('HOST', 'https://tfinance.lifeq.com.cn');
-    //define('HOST', 'http://finance.com');
+    define('HOST', 'http://pic.com');
     //借贷金额单位 分
     define('MONEY_RATIO', 0.01);
     // 我要借款服务商id
