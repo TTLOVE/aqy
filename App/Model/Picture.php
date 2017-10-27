@@ -7,38 +7,16 @@ namespace Model;
  */
 class Picture
 {
-    public static function createPic($userId, $templateId, $title='我内牛满面你却春风得意')
-    {
-        // 获取模板信息
-        $sourceImgUrl = HOST . '/static/template/' . $templateId . ".jpg";
-        $main = imagecreatefromjpeg($sourceImgUrl);
-        $width = imagesx($main);
-        $height = imagesy($main);
-
-		//背景图
-		$backImg = imagecreatetruecolor(750, 1500);
-		$white = imagecolorallocate($backImg, 0, 0, 0);
-		imagefill($backImg, 0, 0, $white);
-
-		//放置模板
-		$boxImg = imagecreatefromstring(file_get_contents($sourceImgUrl));
-		imagecopyresampled($backImg, $boxImg, 0, 0, 0, 0, $width, $height, $width, $height);
-
-		//商家名黑字
-        $ttfPath = PUBLIC_PATH . "/static/template/ttf/fangzheng.ttf";
-        $storeColor = imagecolorallocate($backImg, 0, 0, 0);
-        $storeNameNum = 8;
-        imagefttext($backImg, 18, 0, 145, 950, $storeColor, $ttfPath, $storeName);
-
-        $setPath = '/Pic/poster_' . $userId . '_' . $templateId . '.jpg';
-		$filePath = PUBLIC_PATH . $setPath;
-		//imagepng($backImg, $filename);
-		imagejpeg($backImg, $filePath);
-		$url = HOST . $setPath;
-		return $url;
-	}
-
-    function generateImg($userId, $templateId, $title='我内牛满面你却春风得意') {
+    /**
+        * 生产图片
+        *
+        * @param $posterId 海报主键id
+        * @param $templateId 模板id
+        * @param $title 文案内容
+        *
+        * @return string
+     */
+    function createPic($posterId, $templateId, $title='我内牛满面你却春风得意') {
         // 获取对应模板信息
         $source = HOST . '/static/template/' . $templateId . ".jpg";
         $main = imagecreatefromjpeg( $source );
@@ -55,7 +33,7 @@ class Picture
 
         // 处理文案数据
         $target = $this->dealWithWords($target, $width, $title);
-        $setPath = '/Pic/poster_' . $userId . '_' . $templateId . '.jpg';
+        $setPath = '/Pic/poster_' . $posterId . '_' . $templateId . '.jpg';
 		$filePath = PUBLIC_PATH . $setPath;
 		//imagepng($backImg, $filename);
 		imagejpeg($target, $filePath);

@@ -3,6 +3,9 @@
 namespace Controller;
 use Leaf\Loger\LogDriver;
 use Model\Picture;
+use Model\User;
+use Model\UserPoster;
+use Model\PosterLog;
 
 /**
  * Class WeixinController 微信页面控制器
@@ -29,9 +32,43 @@ class WeixinController extends WeixinBaseController
      */
     public function savePic()
     {
-        $words = isset($_GET['words']) ? strval($_GET['words']) : '最怕空气突然?';
-        $picUrl = (new Picture())->generateImg (1, 1, $words);
-        $this->redirect($picUrl);
+        $uid = 10;
+        $templateId = 1;
+        $userPosterId = (new UserPoster())->addUserPoster($uid);
+        if ( $userPosterId>0 ) {
+            $words = isset($_GET['words']) ? strval($_GET['words']) : '最怕空气突然?';
+            $picUrl = (new Picture())->createPic($userPosterId, $templateId, $words);
+            $insertData = [
+                [
+                    $userPosterId,
+                    $templateId,
+                    $words,
+                    $picUrl
+                ],
+            ];
+            $insertCount = (new PosterLog())->addPosterLog($insertData);
+            if ( $insertCount>0 ) {
+                $redirectUrl = HOST . '/picShow?poster_id=' . $userPosterId;
+                $this->redirect($redirectUrl);
+            }
+        }
+    }
+
+    /**
+     * 根据id显示一整列图片信息
+     *
+     */
+    public function picShow()
+    {
+        $posterId = isset($_GET['poster_id']) ? intval($_GET['poster_id']) : 0;
+        if ( empty($posterId) ) {
+            exit('生成图片失败');
+        }
+        $picList = (new PosterLog())->getPosterLogListByPosterId($posterId);
+        echo "\n\n";
+        var_export($picList);
+        echo "\n\n";
+        exit;
     }
 
     /**

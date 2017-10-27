@@ -4,6 +4,7 @@ use \NoahBuscher\Macaw\Macaw;
 
 // weixin页面
 Macaw::get('home', 'Controller\WeixinController@home');
+Macaw::get('picShow', 'Controller\WeixinController@picShow');
 Macaw::get('savePic', 'Controller\WeixinController@savePic');
 Macaw::post('savePic', 'Controller\WeixinController@savePic');
 

@@ -14,6 +14,7 @@ class DATABASE
     private $DBName;
     private $DBUser;
     private $DBPassword;
+    private $Port;
     private $pdo;
     private $sQuery;
     private $bConnected = false;
@@ -55,6 +56,7 @@ class DATABASE
         $this->DBName     = $dbConfig['database'];
         $this->DBUser     = $dbConfig['username'];
         $this->DBPassword = $dbConfig['password'];
+        $this->Port       = $dbConfig['port'];
         $this->Connect();
         $this->parameters = array();
     }
@@ -63,7 +65,7 @@ class DATABASE
     private function Connect()
     {
         try {
-            $this->pdo = new PDO('mysql:dbname=' . $this->DBName . ';host=' . $this->Host . ';charset=utf8', 
+            $this->pdo = new PDO('mysql:dbname=' . $this->DBName . ';host=' . $this->Host . ';port=' . $this->Port . ';charset=utf8', 
                 $this->DBUser, 
                 $this->DBPassword,
                 array(
