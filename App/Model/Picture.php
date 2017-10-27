@@ -33,7 +33,7 @@ class Picture
 
         // 处理文案数据
         $target = $this->dealWithWords($target, $width, $title);
-        $setPath = '/Pic/poster_' . $posterId . '_' . $templateId . '.jpg';
+        $setPath = '/Pic/poster_' . $posterId . '_' . $templateId . '_' . md5($title) . '.jpg';
 		$filePath = PUBLIC_PATH . $setPath;
 		//imagepng($backImg, $filename);
 		imagejpeg($target, $filePath);

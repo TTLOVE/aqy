@@ -36,16 +36,23 @@ class WeixinController extends WeixinBaseController
         $templateId = 1;
         $userPosterId = (new UserPoster())->addUserPoster($uid);
         if ( $userPosterId>0 ) {
-            $words = isset($_GET['words']) ? strval($_GET['words']) : '最怕空气突然?';
-            $picUrl = (new Picture())->createPic($userPosterId, $templateId, $words);
-            $insertData = [
-                [
+            $insertData = [];
+            $wordsArray = [
+                '最怕空气突然?',
+                '我的最怕空气突然安静',
+                '帮助开发者更方便地进行开发和调试',
+                '可在PC或Mac上模拟访问微信内网页，帮助开发者更方便地进行开发和',
+            ];
+            for ($i = 0; $i < 4; $i++) {
+                $words = $wordsArray[ $i ];
+                $picUrl = (new Picture())->createPic($userPosterId, $templateId, $words);
+                $insertData[] = [
                     $userPosterId,
                     $templateId,
                     $words,
                     $picUrl
-                ],
-            ];
+                ];
+            } 
             $insertCount = (new PosterLog())->addPosterLog($insertData);
             if ( $insertCount>0 ) {
                 $redirectUrl = HOST . '/picShow?poster_id=' . $userPosterId;
@@ -65,10 +72,7 @@ class WeixinController extends WeixinBaseController
             exit('生成图片失败');
         }
         $picList = (new PosterLog())->getPosterLogListByPosterId($posterId);
-        echo "\n\n";
-        var_export($picList);
-        echo "\n\n";
-        exit;
+        $this->view = $this->myView->make('picShow')->with('picList', $picList);
     }
 
     /**
